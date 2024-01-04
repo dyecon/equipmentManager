@@ -14,8 +14,36 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="#050024">
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
     <link rel="stylesheet" href="styles.css">
+
+    <script>
+        function topnavIcon() {
+            var x = document.getElementById("myTopnav");
+            if (x.className === "topnav") {
+                x.className += " responsive";
+            } else {
+                x.className = "topnav";
+            }
+        }
+    </script>
 </head>
 <body>
-    
+     <!--Menu icon for small screens-->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+     <!--Top navigation bar-->
+     <div class="topnav" id="myTopnav">
+       <a href="index.html" class="active">トップ</a>
+       <a href="others.html">その他</a>
+       <a href="javascript:void(0);" class="icon" onclick="topnavIcon()">
+         <i class="fa fa-bars"></i>
+       </a>
+     </div>
+ 
+     <div class="hero-image">
+         <div class="hero-text">
+           <img src="images/logo.png" style="width:70%">
+           <p>備品管理システム</p>
+         </div>
+     </div>
 </body>
 </html>
