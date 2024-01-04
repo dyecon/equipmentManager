@@ -9,3 +9,23 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Dish {
+  id              Int              @id @default(autoincrement())
+  name            String
+  dishIndigirents DishIndigrient[]
+}
+
+model DishIndigrient {
+  id           Int        @id @default(autoincrement())
+  dish         Dish       @relation(fields: [dishId], references: [id])
+  dishId       Int
+  indigrient   Indigrient @relation(fields: [indigrientId], references: [id])
+  indigrientId Int
+}
+
+model Indigrient {
+  id             Int              @id @default(autoincrement())
+  name           String
+  dishIndgrients DishIndigrient[]
+}
