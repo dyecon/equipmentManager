@@ -42,8 +42,27 @@
      <div class="hero-image">
          <div class="hero-text">
            <img src="images/logo.png" style="width:70%">
-           <p>備品管理システム</p>
+           <p>F表データベース</p>
          </div>
      </div>
+    
+    <br>
+    <div class = centered>
+        <h2>料理検索</h2>
+                <form method="post" action="/send">
+                    <div class = "grid">
+                        <div class = "item">
+                            <h3>料理名</h3>
+                            <input placeholder="料理名" name="name"/>
+                        </div>
+                        <div class = "item">
+                            <h3>材料名</h3>
+                            <input placeholder="材料" name="name"/>
+                        </div>
+                    </div>
+                    <button type="submit">検索</button>
+                </form>
+        </div>
+    </div>
 </body>
 </html>
