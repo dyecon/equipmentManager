@@ -61,7 +61,12 @@
                     </div>
                     <div class = "item">
                         <h3>時間帯</h3>
-                        <input type = "text" placeholder="時間帯" name="time"/>
+                        <label for="time">Time of day:</label>
+                        <select id="time" name="time" size="1">
+                            <option value="0">朝</option>
+                            <option value="1">昼</option>
+                            <option value="2">夜</option>
+                        </select>
                     </div>
                 </div>
                 <button type="reset" class = "button">クリア</button>
