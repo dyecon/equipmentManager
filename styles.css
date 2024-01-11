@@ -119,8 +119,19 @@ body, html {
     margin: 4px 2px;
     transition: 0.3s;
 }
-  
-.button:hover {
+
+.button_main {
+    background-color: #946c26;
+    border: 0.2em solid #473700;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition: 0.3s;
+}
+
+.button:hover, .button_main:hover {
     background-color: #dab631;
     color: black;
 }
