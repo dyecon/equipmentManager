@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Equipment Manager</title>
+        <meta charset = "utf-8">
+        <meta name="description" content="Next-gen equipment manager: info">
+        <meta property="og:url" content="http://example.com">
+        <meta property="og:type" content="website">
+
+        <meta name="theme-color" content="#050024">
+        <!-- Windows Phone -->
+        <meta name="msapplication-navbutton-color" content="#050024">
+        <!-- iOS Safari -->
+        <meta name="apple-mobile-web-app-status-bar-style" content="#050024">
+        <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+        <link rel="stylesheet" href="styles.css">
+
+        <script>
+            function topnavIcon() {
+                var x = document.getElementById("myTopnav");
+                if (x.className === "topnav") {
+                    x.className += " responsive";
+                } else {
+                    x.className = "topnav";
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <!--Menu icon for small screens-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <!--Top navigation bar-->
+        <div class="topnav" id="myTopnav">
+        <a href="index.html">トップ</a>
+        <a href="info.html" class = "active">説明</a>
+        <a href="javascript:void(0);" class="icon" onclick="topnavIcon()">
+            <i class="fa fa-bars"></i>
+        </a>
+        </div>
+ 
+        <div class="hero-image">
+            <div class="hero-text">
+            <img src="images/F logo.png" style="width:70%">
+            <p>F表データベース</p>
+            </div>
+        </div>
+        <br>
+        <div class = "centered">
+            <h3>F表は、料理名・材料名・時間帯を指定して、該当するメニューを検索できるシステムです。</h2>
+            <br>
+            <h4>制作者</h4>
+            <div class = "grid">
+                <div class = "item">
+                    Couna
+                </div>
+                <div class = "item">
+                    Ken
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

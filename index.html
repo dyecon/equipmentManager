@@ -1,9 +1,78 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset = "utf-8">
     <title>Equipment Manager</title>
+    <meta charset = "utf-8">
+    <meta name="description" content="Next-gen equipment manager">
+    <meta property="og:url" content="http://example.com">
+    <meta property="og:type" content="website">
+
+    <meta name="theme-color" content="#050024">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#050024">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="#050024">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="stylesheet" href="styles.css">
+
+    <script>
+        function topnavIcon() {
+            var x = document.getElementById("myTopnav");
+            if (x.className === "topnav") {
+                x.className += " responsive";
+            } else {
+                x.className = "topnav";
+            }
+        }
+    </script>
 </head>
 <body>
+     <!--Menu icon for small screens-->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+     <!--Top navigation bar-->
+     <div class="topnav" id="myTopnav">
+       <a href="index.html" class="active">トップ</a>
+       <a href="info.html">説明</a>
+       <a href="javascript:void(0);" class="icon" onclick="topnavIcon()">
+         <i class="fa fa-bars"></i>
+       </a>
+     </div>
+ 
+     <div class="hero-image">
+         <div class="hero-text">
+           <img src="images/F logo.png" style="width:70%">
+           <p>F表データベース</p>
+         </div>
+     </div>
     
+    <br>
+    <div class = centered>
+        <h2>料理検索</h2>
+            <form method="post" action="/send">
+                <div class = "grid">
+                    <div class = "item">
+                        <h3>料理名</h3>
+                        <input type = "text" placeholder="料理名" name="dish"/>
+                    </div>
+                    <div class = "item">
+                        <h3>材料名</h3>
+                        <input type = "text" placeholder="材料" name="ingredients"/>
+                    </div>
+                    <div class = "item">
+                        <h3>時間帯</h3>
+                        <label for="time">Time of day:</label>
+                        <select id="time" name="time" size="1">
+                            <option value="夜">夜</option>
+                            <option value="朝">朝</option>
+                            <option value="昼">昼</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="reset" class = "button">クリア</button>
+                <button type="submit" class = "button_main">検索</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
