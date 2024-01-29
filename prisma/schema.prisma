@@ -13,19 +13,21 @@ datasource db {
 model Dish {
   id              Int              @id @default(autoincrement())
   name            String
-  dishIndigirents DishIndigrient[]
+  wheneat         String           @default("夜")
+  dishingredients Dishingredients[]
 }
 
-model DishIndigrient {
+model Dishingredients {
   id           Int        @id @default(autoincrement())
   dish         Dish       @relation(fields: [dishId], references: [id])
   dishId       Int
-  indigrient   Indigrient @relation(fields: [indigrientId], references: [id])
-  indigrientId Int
+  ingredients  Ingredients @relation(fields: [ingredientsId], references: [id])
+  ingredientsId Int
 }
 
-model Indigrient {
+model Ingredients {
   id             Int              @id @default(autoincrement())
   name           String
-  dishIndgrients DishIndigrient[]
+  unit           String           @default("本")
+  dishingredients Dishingredients[]
 }
