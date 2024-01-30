@@ -1,6 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 import { readFileSync } from "node:fs";
 import express from "express";
+import { Console } from "node:console";
 
 const app = express();
 const client = new PrismaClient();
@@ -9,21 +10,35 @@ app.use(express.urlencoded({ extended: true }));
 
 app.get("/", (request, response) => {
     const template = readFileSync("./index.html", "utf-8");
-
     response.send(template);
   });
   
 
 app.post("/send", async (request, response) => {
-    const g = await DishSearch(request.dish, request.ingredients, request.time)
+    const dish = request.body.dish; // 料理名
+    const ingredients = request.body.ingredients; // 材料名
+    const time = request.body.time; // 時間帯
+
+   const g = await DishSearch(dish, ingredients, time)
+    const template = readFileSync("./index.html", "utf-8");
+    var html = template
+    
     if (g.length<1){
-        
+        html = template.replace(
+            "<!--data-->",
+            "該当するFが見つかりません..."
+          );
     }
-    response.send("送信しました。");
+    else{
+        html = template.replace(
+            "<!--data-->",
+
+            g.map((firstArray) =>
+            firstArray.join("")),
+          )
+    }
+    response.send(html);
   });
-
-const g = await DishSearch("カレ ー", "人参", "夜")
-
 
 app.listen(3000);
 //----------------------mainの関数------------------
@@ -31,11 +46,9 @@ async function DishSearch(DishName , Ingredients , Timetype){
 
 
         if (DishName !== null){
-            DishName.replace(/　/g, " ");
             const dNameArray = DishName.split(' ');
 
             if(Ingredients !== null){
-                Ingredients.replace(/　/g, " ");
                 const iNameArray = Ingredients.split(' ');
                 //pattern1
                 return _pattern1(dNameArray,iNameArray,Timetype);
@@ -54,7 +67,6 @@ async function DishSearch(DishName , Ingredients , Timetype){
         else{
 
             if(Ingredients !== null){
-                Ingredients.replace(/　/g, " ");
                 const iNameArray = Ingredients.split(' ');
                 //pattern3
                 return _pattern3(iNameArray,Timetype);
@@ -121,10 +133,12 @@ function fReturn(fArray){
     var s =[]
     for (  var i = 0;  i < fArray.length ;  i++  ) {
         var u = []
-        u.push(fArray[i].name);
+        u.push(`<p><b>${fArray[i].name}</b></p>`);
+        u.push("<p>素材</p>")
         for (  var v = 0;  v < fArray[i].dishingredients.length ;  v++  ) {
-            u.push(fArray[i].dishingredients[v].ingredients.name)
+            u.push(` &#009; &#009;&#009; <li>${fArray[i].dishingredients[v].ingredients.name}</li>`)
         }
+        u.push("<p></p>")
         s.push(u)
     }
     return s
