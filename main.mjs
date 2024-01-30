@@ -10,6 +10,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static('./'));
 app.get("/", (request, response) => {
     const template = readFileSync("./index.html", "utf-8");
+
     response.send(template);
   });
   
@@ -28,14 +29,30 @@ app.post("/send", async (request, response) => {
             "<!--data-->",
             "該当するFが見つかりません..."
           );
+          html = html.replace(
+            "<!--ryourimei-->",
+            `value="${dish}"`
+        );
+        html = html.replace(
+            "<!--Zairyoumei-->",
+            `value="${ingredients}"`
+        );
     }
     else{
         html = template.replace(
             "<!--data-->",
 
             g.map((firstArray) =>
-            firstArray.join("")),
+            firstArray.join(""))
           )
+          html = html.replace(
+            "<!--ryourimei-->",
+            `value="${dish}"`
+        );
+        html = html.replace(
+            "<!--Zairyoumei-->",
+            `value="${ingredients}"`
+        );
     }
     response.send(html);
   });
@@ -138,7 +155,7 @@ function fReturn(fArray){
         for (  var v = 0;  v < fArray[i].dishingredients.length ;  v++  ) {
             u.push(` &#009; &#009;&#009; <li>${fArray[i].dishingredients[v].ingredients.name}</li>`)
         }
-        u.push("<p></p>")
+         u.push("<p></p>")
         s.push(u)
     }
     return s
