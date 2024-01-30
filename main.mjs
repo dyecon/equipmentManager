@@ -6,7 +6,7 @@ const app = express();
 const client = new PrismaClient();
 
 app.use(express.urlencoded({ extended: true }));
-
+app.use(express.static('./'));
 app.get("/", (request, response) => {
     const template = readFileSync("./index.html", "utf-8");
 
