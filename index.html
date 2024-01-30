@@ -49,30 +49,31 @@
     <br>
     <div class = centered>
         <h2>料理検索</h2>
-            <form method="post" action="/send">
-                <div class = "grid">
-                    <div class = "item">
-                        <h3>料理名</h3>
-                        <input type = "text" placeholder="料理名" name="dish"/>
-                    </div>
-                    <div class = "item">
-                        <h3>材料名</h3>
-                        <input type = "text" placeholder="材料" name="ingredients"/>
-                    </div>
-                    <div class = "item">
-                        <h3>時間帯</h3>
-                        <label for="time">Time of day:</label>
-                        <select id="time" name="time" size="1">
-                            <option value="夜">夜</option>
-                            <option value="朝">朝</option>
-                            <option value="昼">昼</option>
-                        </select>
-                    </div>
+        <form method="post" action="/send">
+            <div class = "grid">
+                <div class = "item">
+                    <h3>料理名</h3>
+                    <input type = "text" placeholder="料理名" name="dish"/>
                 </div>
-                <button type="reset" class = "button">クリア</button>
-                <button type="submit" class = "button_main">検索</button>
-            </form>
-        </div>
+                <div class = "item">
+                    <h3>材料名</h3>
+                    <input type = "text" placeholder="材料" name="ingredients"/>
+                </div>
+                <div class = "item">
+                    <h3>時間帯</h3>
+                    <label for="time">Time of day:</label>
+                    <select id="time" name="time" size="1">
+                        <option value="夜">夜</option>
+                        <option value="朝">朝</option>
+                        <option value="昼">昼</option>
+                    </select>
+                </div>
+            </div>
+            <button type="reset" class = "button">クリア</button>
+            <button type="submit" class = "button_main">検索</button>
+        </form>
+        <br>
+        <!--data-->
     </div>
 </body>
 </html>
