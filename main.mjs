@@ -31,11 +31,11 @@ app.post("/send", async (request, response) => {
           );
           html = html.replace(
             "<!--ryourimei-->",
-            `value="${dish}"`
+            `value="${dish}" >`
         );
         html = html.replace(
             "<!--Zairyoumei-->",
-            `value="${ingredients}"`
+            `value="${ingredients}" >`
         );
     }
     else{
@@ -47,11 +47,11 @@ app.post("/send", async (request, response) => {
           )
           html = html.replace(
             "<!--ryourimei-->",
-            `value="${dish}"`
+            `value="${dish}" >`
         );
         html = html.replace(
             "<!--Zairyoumei-->",
-            `value="${ingredients}"`
+            `value="${ingredients}" >`
         );
     }
     response.send(html);
@@ -62,10 +62,10 @@ app.listen(3000);
 async function DishSearch(DishName , Ingredients , Timetype){
 
 
-        if (DishName !== null){
+        if (DishName !== ""){
             const dNameArray = DishName.split(' ');
 
-            if(Ingredients !== null){
+            if(Ingredients !== ""){
                 const iNameArray = Ingredients.split(' ');
                 //pattern1
                 return _pattern1(dNameArray,iNameArray,Timetype);
@@ -83,7 +83,7 @@ async function DishSearch(DishName , Ingredients , Timetype){
         }
         else{
 
-            if(Ingredients !== null){
+            if(Ingredients !== ""){
                 const iNameArray = Ingredients.split(' ');
                 //pattern3
                 return _pattern3(iNameArray,Timetype);
