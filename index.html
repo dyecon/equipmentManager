@@ -53,11 +53,12 @@
             <div class = "grid">
                 <div class = "item">
                     <h3>料理名</h3>
-                    <input type = "text" placeholder="料理名" name="dish"/>
+                    <input type = "text" id="myInput1" placeholder="料理名" name="dish" <!--ryourimei-->
                 </div>
                 <div class = "item">
                     <h3>材料名</h3>
-                    <input type = "text" placeholder="材料" name="ingredients"/>
+                    <input type = "text" id="myInput2" placeholder="材料" name="ingredients" <!--Zairyoumei-->
+                    
                 </div>
                 <div class = "item">
                     <h3>時間帯</h3>
@@ -69,7 +70,18 @@
                     </select>
                 </div>
             </div>
-            <button type="reset" class = "button">クリア</button>
+            <button onclick="changeInputValue()" class = "button" type="button">クリア</button>
+            <script>
+                function changeInputValue() {
+                    // input要素を取得
+                    var input = document.getElementById("myInput1");
+                    
+                    // 新しい値を設定
+                    input.value = "";
+                    var input = document.getElementById("myInput2");
+                    input.value = "";
+                }
+                </script>
             <button type="submit" class = "button_main">検索</button>
         </form>
         <br>

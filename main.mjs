@@ -10,6 +10,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static('./'));
 app.get("/", (request, response) => {
     const template = readFileSync("./index.html", "utf-8");
+
     response.send(template);
   });
   
@@ -28,14 +29,30 @@ app.post("/send", async (request, response) => {
             "<!--data-->",
             "該当するFが見つかりません..."
           );
+          html = html.replace(
+            "<!--ryourimei-->",
+            `value="${dish}" >`
+        );
+        html = html.replace(
+            "<!--Zairyoumei-->",
+            `value="${ingredients}" >`
+        );
     }
     else{
         html = template.replace(
             "<!--data-->",
 
             g.map((firstArray) =>
-            firstArray.join("")),
+            firstArray.join(""))
           )
+          html = html.replace(
+            "<!--ryourimei-->",
+            `value="${dish}" >`
+        );
+        html = html.replace(
+            "<!--Zairyoumei-->",
+            `value="${ingredients}" >`
+        );
     }
     response.send(html);
   });
@@ -45,10 +62,10 @@ app.listen(3000);
 async function DishSearch(DishName , Ingredients , Timetype){
 
 
-        if (DishName !== null){
+        if (DishName !== ""){
             const dNameArray = DishName.split(' ');
 
-            if(Ingredients !== null){
+            if(Ingredients !== ""){
                 const iNameArray = Ingredients.split(' ');
                 //pattern1
                 return _pattern1(dNameArray,iNameArray,Timetype);
@@ -66,7 +83,7 @@ async function DishSearch(DishName , Ingredients , Timetype){
         }
         else{
 
-            if(Ingredients !== null){
+            if(Ingredients !== ""){
                 const iNameArray = Ingredients.split(' ');
                 //pattern3
                 return _pattern3(iNameArray,Timetype);
@@ -133,12 +150,12 @@ function fReturn(fArray){
     var s =[]
     for (  var i = 0;  i < fArray.length ;  i++  ) {
         var u = []
-        u.push(`<p><b>${fArray[i].name}</b></p>`);
+        u.push(`<p><font color=”#FFA500”><b>${fArray[i].name}</b></font></p>`);
         u.push("<p>素材</p>")
         for (  var v = 0;  v < fArray[i].dishingredients.length ;  v++  ) {
             u.push(` &#009; &#009;&#009; <li>${fArray[i].dishingredients[v].ingredients.name}</li>`)
         }
-        u.push("<p></p>")
+         u.push("<p>--------------------------------------</p>")
         s.push(u)
     }
     return s
