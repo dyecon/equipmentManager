@@ -150,12 +150,12 @@ function fReturn(fArray){
     var s =[]
     for (  var i = 0;  i < fArray.length ;  i++  ) {
         var u = []
-        u.push(`<p><b>${fArray[i].name}</b></p>`);
+        u.push(`<p><font color=”#FFA500”><b>${fArray[i].name}</b></font></p>`);
         u.push("<p>素材</p>")
         for (  var v = 0;  v < fArray[i].dishingredients.length ;  v++  ) {
             u.push(` &#009; &#009;&#009; <li>${fArray[i].dishingredients[v].ingredients.name}</li>`)
         }
-         u.push("<p></p>")
+         u.push("<p>--------------------------------------</p>")
         s.push(u)
     }
     return s
